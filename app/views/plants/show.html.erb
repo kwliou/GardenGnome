@@ -1,0 +1,28 @@
+<p>
+  <b>Plot:</b>
+  <%=h @plant.plot_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @plant.name %>
+</p>
+
+<p>
+  <b>Species:</b>
+  <%=h @plant.species %>
+</p>
+
+<p>
+  <b>Online entry:</b>
+  <%=h @plant.online_entry %>
+</p>
+
+<p>
+  <b>Info:</b>
+  <%=h @plant.info %>
+</p>
+
+
+<%= link_to 'Edit', edit_plant_path(@plant) %> |
+<%= link_to 'Back', plants_path %>

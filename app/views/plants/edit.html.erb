@@ -1,0 +1,32 @@
+<h1>Editing plant</h1>
+
+<% form_for(@plant) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :plot_id %><br />
+    <%= f.text_field :plot_id %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :species %><br />
+    <%= f.text_field :species %>
+  </p>
+  <p>
+    <%= f.label :online_entry %><br />
+    <%= f.text_field :online_entry %>
+  </p>
+  <p>
+    <%= f.label :info %><br />
+    <%= f.text_area :info %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @plant %> |
+<%= link_to 'Back', plants_path %>

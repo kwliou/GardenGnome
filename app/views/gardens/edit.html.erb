@@ -1,0 +1,12 @@
+<h1>Editing garden</h1>
+
+<% form_for(@garden) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @garden %> |
+<%= link_to 'Back', gardens_path %>

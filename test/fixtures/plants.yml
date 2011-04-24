@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  plot_id: 1
+  name: MyString
+  species: MyString
+  online_entry: MyString
+  info: MyText
+
+two:
+  plot_id: 1
+  name: MyString
+  species: MyString
+  online_entry: MyString
+  info: MyText

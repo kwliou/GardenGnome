@@ -1,0 +1,25 @@
+<div style="text-align: center">
+<%= image_tag "/images/logo.png", :alt => "GardenGnome" %>
+</div>
+
+<h2>List of public gardens</h2>
+<table>
+  <tr>
+  </tr>
+
+  <% @gardens.each do |garden| %>
+    <% if garden.public %>
+      <tr>
+        <td><%=h garden.name %></td>
+        <td>(<%=h garden.city %>, <%=h garden.state %>)</td>
+        <td><%= link_to 'Show', garden %></td>
+        <!--td><%= link_to 'Edit', edit_garden_path(garden) %></td-->
+        <!--td><%= link_to 'Destroy', garden, :confirm => 'Are you sure?', :method => :delete %></td-->
+        </tr>
+    <% end %>
+  <% end %>
+</table>
+
+<br />
+
+<!--%= link_to 'New garden', new_garden_path %-->
