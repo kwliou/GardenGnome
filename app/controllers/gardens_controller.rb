@@ -4,7 +4,7 @@ class GardensController < ApplicationController
   # GET /gardens
   # GET /gardens.xml
   def index
-    @gardens = Garden.all
+    @gardens = Garden.find_all_by_public(true)
 
     respond_to do |format|
       format.html # index.html.erb
