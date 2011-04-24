@@ -2,7 +2,27 @@
 
 <% form_for(@garden) do |f| %>
   <%= f.error_messages %>
-
+  
+ <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :state %><br />
+    <%= f.text_field :state %>
+  </p>
+  <p>
+    <%= f.label :public %><br />
+    <%= f.select :public, ["true", "false"] %>
+  </p>
+  <p>
+    <%= f.label :info %><br />
+    <%= f.text_area :info %>
+  </p>
   <p>
     <%= f.submit 'Update' %>
   </p>

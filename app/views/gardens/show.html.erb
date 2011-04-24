@@ -1,3 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%=h @garden.name %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%=h @garden.city %>,
+  <%=h @garden.state %>
+</p>
+
+<p>
+  <b>Public?:</b>
+  <%=h @garden.public %>
+</p>
+
+<p>
+  <b>Info:</b>
+  <%=h @garden.info %>
+</p>
 
 <%= link_to 'Edit', edit_garden_path(@garden) %> |
 <%= link_to 'Back', gardens_path %>
