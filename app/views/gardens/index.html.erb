@@ -5,15 +5,13 @@
 <h2>List of public gardens</h2>
 <table>
   <% @gardens.each do |garden| %>
-    <% if garden.public %>
-      <tr>
-        <td><%=h garden.name %></td>
-        <td>(<%=h garden.city %>, <%=h garden.state %>)</td>
-        <td><%= link_to 'Show', garden %></td>
-        <td><%= link_to 'Edit', edit_garden_path(garden) %></td>
-        <td><%= link_to 'Destroy', garden, :confirm => 'Are you sure?', :method => :delete %></td>
-        </tr>
-    <% end %>
+    <tr>
+      <td><%=h garden.name %></td>
+      <td>(<%=h garden.city %>, <%=h garden.state %>)</td>
+      <td><%= link_to 'Show', garden %></td>
+      <td><%= link_to 'Edit', edit_garden_path(garden) %></td>
+      <td><%= link_to 'Destroy', garden, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
   <% end %>
 </table>
 
@@ -21,16 +19,14 @@
 
 <h2>List of private gardens</h2>
 <table>
-  <% @gardens.each do |garden| %>
-    <% if !garden.public %>
-      <tr>
-        <td><%=h garden.name %></td>
-        <td>(<%=h garden.city %>, <%=h garden.state %>)</td>
-        <td><%= link_to 'Show', garden %></td>
-        <td><%= link_to 'Edit', edit_garden_path(garden) %></td>
-        <td><%= link_to 'Destroy', garden, :confirm => 'Are you sure?', :method => :delete %></td>
-        </tr>
-    <% end %>
+  <% @private_gardens.each do |garden| %>
+    <tr>
+      <td><%=h garden.name %></td>
+      <td>(<%=h garden.city %>, <%=h garden.state %>)</td>
+      <td><%= link_to 'Show', garden %></td>
+      <td><%= link_to 'Edit', edit_garden_path(garden) %></td>
+      <td><%= link_to 'Destroy', garden, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
   <% end %>
 </table>
 

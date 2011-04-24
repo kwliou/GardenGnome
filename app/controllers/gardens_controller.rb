@@ -5,6 +5,7 @@ class GardensController < ApplicationController
   # GET /gardens.xml
   def index
     @gardens = Garden.find_all_by_public(true)
+    @private_gardens = Garden.find_all_by_public(false)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -45,7 +46,7 @@ class GardensController < ApplicationController
   # POST /gardens.xml
   def create
     @garden = Garden.new(params[:garden])
-
+    
     respond_to do |format|
       if @garden.save
         format.html { redirect_to(@garden, :notice => 'Garden was successfully created.') }
