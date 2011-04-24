@@ -45,8 +45,11 @@ class GardensController < ApplicationController
   # POST /gardens
   # POST /gardens.xml
   def create
-    @garden = Garden.new(params[:garden])
-    
+    if params.has_key?(:garden)
+	    @garden = Garden.new(params[:garden])
+    else
+    	@garden = Garden.new(ActiveSupport::JSON.decode(params))
+    end
     respond_to do |format|
       if @garden.save
         format.html { redirect_to(@garden, :notice => 'Garden was successfully created.') }
