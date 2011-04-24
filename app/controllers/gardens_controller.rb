@@ -1,6 +1,8 @@
 class GardensController < ApplicationController
   layout "scaffold"
-
+  
+  protect_from_forgery :except => :create
+  
   # GET /gardens
   # GET /gardens.xml
   def index
