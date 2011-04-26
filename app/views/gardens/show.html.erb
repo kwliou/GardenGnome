@@ -19,5 +19,14 @@
   <%=h @garden.info %>
 </p>
 
+<b>Photos:</b>
+
+<% @photos.each_with_index do |photo, i| %>
+  <p>
+    <%=h photo.title %><br />
+    <%= image_tag "#{@aws}#{@garden.name}#{i}.jpg" %>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_garden_path(@garden) %> |
 <%= link_to 'Back', gardens_path %>

@@ -17,13 +17,13 @@ class GardensController < ApplicationController
   end
 
   # GET /gardens/1
-  # GET /gardens/1.xml
   def show
     @garden = Garden.find(params[:id])
-
+    @photos = @garden.photos
+    @aws = "http://s3.amazonaws.com/gardengnome/"
+    
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @garden }
       format.json  { render :json => @garden }
     end
   end

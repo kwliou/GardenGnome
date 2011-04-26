@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(:version => 20110426074744) do
   end
 
   create_table "photos", :force => true do |t|
+    t.integer  "garden_id"
+    t.integer  "plant_id"
     t.string   "title"
     t.text     "info"
     t.datetime "created_at"
