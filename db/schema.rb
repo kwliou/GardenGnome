@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110424065533) do
+ActiveRecord::Schema.define(:version => 20110426074744) do
 
   create_table "gardens", :force => true do |t|
     t.string   "name"
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(:version => 20110424065533) do
     t.text     "info"
     t.string   "city"
     t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.string   "title"
+    t.text     "info"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

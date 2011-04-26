@@ -1,9 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :plants
 
+  map.resources :gardens do |garden|
+    garden.resources :photos
+    garden.stub 'stub', :controller => :gardens, :action => :stub
+  end
   map.resources :plots
-
-  map.resources :gardens
+  map.resources :plants
 
   # The priority is based upon order of creation: first created -> highest priority.
 

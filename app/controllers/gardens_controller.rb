@@ -28,6 +28,25 @@ class GardensController < ApplicationController
     end
   end
 
+  # GET /search
+  def search
+    name = params[:name]
+    city = params[:city]
+    state = params[:state]
+    @garden = Garden.first(:conditions => ["name = ? AND city = ? AND state = ?", name, city, state])
+
+    respond_to do |format|
+      format.json  { render :json => @garden.id }
+    end
+  end
+
+  # GET /gardens/1/stub
+  def stub
+    @garden = Garden.find(params[:garden_id])
+
+    render :json => @garden.stub
+  end
+
   # GET /gardens/new
   # GET /gardens/new.xml
   def new
