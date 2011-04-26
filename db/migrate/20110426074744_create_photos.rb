@@ -1,8 +1,8 @@
 class CreatePhotos < ActiveRecord::Migration
   def self.up
     create_table :photos do |t|
-      t.int :garden_id
-      t.int :plant_id
+      t.integer :garden_id
+      t.integer :plant_id
       t.string :title
       t.text :info
 
