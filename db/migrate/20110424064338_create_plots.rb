@@ -6,6 +6,7 @@ class CreatePlots < ActiveRecord::Migration
       t.integer :shape
       t.integer :color
       t.float :angle
+      t.string :bounds
       t.string :points
       t.text :info
 

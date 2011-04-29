@@ -3,7 +3,7 @@ class CreateGardens < ActiveRecord::Migration
     create_table :gardens do |t|
       t.string :name
       t.string :password
-      t.boolean :public
+      t.boolean :is_public
       t.float :width
       t.float :height
       t.string :city

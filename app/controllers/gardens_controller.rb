@@ -6,8 +6,8 @@ class GardensController < ApplicationController
   # GET /gardens
   # GET /gardens.xml
   def index
-    @gardens = Garden.find_all_by_public(true)
-    @private_gardens = Garden.find_all_by_public(false)
+    @gardens = Garden.find_all_by_is_public(true)
+    @private_gardens = Garden.find_all_by_is_public(false)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -64,20 +64,21 @@ class GardensController < ApplicationController
   end
 
   # POST /gardens
-  # POST /gardens.xml
   def create
-    #if params.has_key?(:garden)
-    @garden = Garden.new(params[:garden])
-    #else
-    #  @garden = Garden.new(ActiveSupport::JSON.decode(params))
-    #end
+    if params.has_key?(:garden)
+    	@garden = Garden.new(params[:garden])
+    else
+      @garden = Garden.new(params)
+    end
     respond_to do |format|
       if @garden.save
         format.html { redirect_to(@garden, :notice => 'Garden was successfully created.') }
-        format.xml  { render :xml => @garden, :status => :created, :location => @garden }
+        #format.xml  { render :xml => @garden, :status => :created, :location => @garden }
+        format.json { render :json => @garden.id }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @garden.errors, :status => :unprocessable_entity }
+        format.json { render :json => 0 }
       end
     end
   end
