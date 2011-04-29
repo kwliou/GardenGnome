@@ -24,7 +24,7 @@
 <% @photos.each_with_index do |photo, i| %>
   <p>
     <%=h photo.title %><br />
-    <%= image_tag "#{@aws}#{@photo_urls[i]}.jpg" %>
+    <%= image_tag "#{@aws}#{@garden.name}#{@hash[i]}.jpg" %>
   </p>
 <% end %>
 

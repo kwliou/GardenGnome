@@ -21,7 +21,7 @@ class GardensController < ApplicationController
   def show
     @garden = Garden.find(params[:id])
     @photos = @garden.photos
-    @photo_urls = @photos.map {|p| Digest::SHA2.hexdigest("#{@garden.city}|#{@garden.state}|#{@garden.password}|#{p.id}") }
+    @hash = @photos.map {|p| Digest::SHA2.hexdigest("#{@garden.city}|#{@garden.state}|#{@garden.password}|#{p.id}") }
 	
     @aws = "http://s3.amazonaws.com/gardengnome/"
     
