@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(:version => 20110426074744) do
     t.float    "width"
     t.float    "height"
     t.string   "password"
-    t.boolean  "public"
+    t.boolean  "is_public"
     t.text     "info"
     t.string   "city"
     t.string   "state"
