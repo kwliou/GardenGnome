@@ -1,4 +1,5 @@
 class GardensController < ApplicationController
+  require 'digest/sha2'
   layout "scaffold"
   
   protect_from_forgery :except => :create
@@ -20,6 +21,8 @@ class GardensController < ApplicationController
   def show
     @garden = Garden.find(params[:id])
     @photos = @garden.photos
+    @photo_urls = @photos.map {|p| Digest::SHA2.hexdigest("#{@garden.city}|#{@garden.state}|#{@garden.password}|#{p.id}") }
+	
     @aws = "http://s3.amazonaws.com/gardengnome/"
     
     respond_to do |format|
@@ -34,9 +37,9 @@ class GardensController < ApplicationController
     city = params[:city]
     state = params[:state]
     @garden = Garden.first(:conditions => ["name = ? AND city = ? AND state = ?", name, city, state])
-
+	
     respond_to do |format|
-      format.json  { render :json => @garden.id }
+      format.json  { render :json => @garden.nil? ? 0 : @garden.id }
     end
   end
 
@@ -64,21 +67,19 @@ class GardensController < ApplicationController
   end
 
   # POST /gardens
+  # POST /gardens.json
   def create
-    if params.has_key?(:garden)
-    	@garden = Garden.new(params[:garden])
-    else
-      @garden = Garden.new(params)
-    end
+    @garden = Garden.new(params[:garden])
+
     respond_to do |format|
       if @garden.save
         format.html { redirect_to(@garden, :notice => 'Garden was successfully created.') }
-        #format.xml  { render :xml => @garden, :status => :created, :location => @garden }
         format.json { render :json => @garden.id }
+        #format.xml  { render :xml => @garden, :status => :created, :location => @garden }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @garden.errors, :status => :unprocessable_entity }
         format.json { render :json => 0 }
+        #format.xml  { render :xml => @garden.errors, :status => :unprocessable_entity }
       end
     end
   end

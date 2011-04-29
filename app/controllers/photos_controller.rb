@@ -41,7 +41,7 @@ class PhotosController < ApplicationController
   end
 
   # POST /photos
-  # POST /photos.xml
+  # POST /photos.json
   def create
     @garden = Garden.find(params[:garden_id])
     @photo = @garden.photos.build(params[:photo])
@@ -49,10 +49,12 @@ class PhotosController < ApplicationController
     respond_to do |format|
       if @photo.save
         format.html { redirect_to(@photo, :notice => 'Photo was successfully created.') }
-        format.xml  { render :xml => @photo, :status => :created, :location => @photo }
+        format.json { render :json => @photo.id }
+        #format.xml  { render :xml => @photo, :status => :created, :location => @photo }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
+        format.json { render :json => 0 }
+        #format.xml  { render :xml => @photo, :status => :created, :location => @photo }
       end
     end
   end
