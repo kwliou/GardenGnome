@@ -4,6 +4,9 @@ ActionController::Routing::Routes.draw do |map|
   map.stubs 'stubs', :controller => :gardens, :action => :stubs
   map.resources :gardens do |garden|
     garden.resources :photos
+    garden.resources :plots do |plot|
+    	plot.resources :plants
+    end
     garden.stub 'stub', :controller => :gardens, :action => :stub
   end
   map.resources :plots
