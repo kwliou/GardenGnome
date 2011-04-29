@@ -17,6 +17,14 @@ class GardensController < ApplicationController
     end
   end
 
+  # GET /gardens/stubs
+  def stubs
+    @gardens = Garden.all
+    @stubs = @gardens.map { |g| g.stub }
+
+    render :json => @stubs
+  end
+
   # GET /gardens/1
   def show
     @garden = Garden.find(params[:id])

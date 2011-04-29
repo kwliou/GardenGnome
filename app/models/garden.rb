@@ -4,7 +4,7 @@ class Garden < ActiveRecord::Base
   validates_uniqueness_of :name, :scope => [:city, :state]
 
   def stub
-    [name, city, state]
+    [id.to_s, name, city, state]
   end
 
 end

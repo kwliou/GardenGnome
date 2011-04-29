@@ -1,6 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
 
   map.search_garden 'search', :controller => :gardens, :action => :search
+  map.stubs 'stubs', :controller => :gardens, :action => :stubs
   map.resources :gardens do |garden|
     garden.resources :photos
     garden.stub 'stub', :controller => :gardens, :action => :stub
