@@ -45,7 +45,7 @@ class PhotosController < ApplicationController
   def create
     @garden = Garden.find(params[:garden_id])
     @photo = @garden.photos.build(params[:photo])
-    @garden.photos << @photo
+
     respond_to do |format|
       if @photo.save
         format.html { redirect_to(@photo, :notice => 'Photo was successfully created.') }

@@ -37,18 +37,21 @@ class PlotsController < ApplicationController
     @plot = Plot.find(params[:id])
   end
 
-  # POST /plots
-  # POST /plots.xml
+  # POST /gardens/1/plots
+  # POST /gardens/1/plots.json
   def create
-    @plot = Plot.new(params[:plot])
+    @garden = Garden.find(params[:garden_id])
+    @plot = @garden.plots.build(params[:plot])
 
     respond_to do |format|
       if @plot.save
         format.html { redirect_to(@plot, :notice => 'Plot was successfully created.') }
-        format.xml  { render :xml => @plot, :status => :created, :location => @plot }
+        format.json  { render :json => @plot.id }
+        #format.xml  { render :xml => @plot, :status => :created, :location => @plot }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @plot.errors, :status => :unprocessable_entity }
+        format.json  { render :json => 0 }
+        #format.xml  { render :xml => @plot.errors, :status => :unprocessable_entity }
       end
     end
   end
