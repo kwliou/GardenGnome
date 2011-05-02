@@ -41,7 +41,7 @@ class PlotsController < ApplicationController
   # POST /gardens/1/plots.json
   def create
     @garden = Garden.find(params[:garden_id])
-    params[:plot] = params[:plot].join(',')
+    params[:plot][:points] = params[:plot][:points].join(',')
     @plot = @garden.plots.build(params[:plot])
 
     respond_to do |format|
