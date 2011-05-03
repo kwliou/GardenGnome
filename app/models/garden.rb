@@ -1,7 +1,7 @@
 class Garden < ActiveRecord::Base
 
-  has_many :photos 
-  has_many :plots
+  has_many :photos, :dependent => :destroy 
+  has_many :plots, :dependent => :destroy
   validates_uniqueness_of :name, :scope => [:city, :state]
 
   def stub
