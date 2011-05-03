@@ -2,11 +2,13 @@ class PlantsController < ApplicationController
   # GET /plants
   # GET /plants.xml
   def index
-    @plants = Plant.all
+    @plot = Plot.find(params[:plot_id])
+    @plants = @plot.plants
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @plants }
+      format.json  { render :json => @plants }
+      #format.xml  { render :xml => @plants }
     end
   end
 
