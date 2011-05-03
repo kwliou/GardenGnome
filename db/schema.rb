@@ -9,17 +9,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110426074744) do
+ActiveRecord::Schema.define(:version => 20110503035139) do
 
   create_table "gardens", :force => true do |t|
     t.string   "name"
-    t.float    "width"
-    t.float    "height"
     t.string   "password"
     t.boolean  "is_public"
-    t.text     "info"
+    t.float    "width"
+    t.float    "height"
     t.string   "city"
     t.string   "state"
+    t.string   "image_preview"
+    t.text     "info"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "journals", :force => true do |t|
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,10 +53,11 @@ ActiveRecord::Schema.define(:version => 20110426074744) do
   create_table "plots", :force => true do |t|
     t.integer  "garden_id"
     t.string   "name"
-    t.integer  "shape"
+    t.integer  "shapetype"
     t.integer  "color"
     t.float    "angle"
-    t.string   "points"
+    t.string   "bounds"
+    t.text     "points"
     t.text     "info"
     t.datetime "created_at"
     t.datetime "updated_at"

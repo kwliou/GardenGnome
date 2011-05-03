@@ -3,11 +3,11 @@ class CreatePlots < ActiveRecord::Migration
     create_table :plots do |t|
       t.integer :garden_id
       t.string :name
-      t.integer :type
+      t.integer :shapetype
       t.integer :color
       t.float :angle
       t.string :bounds
-      t.string :points
+      t.text :points
       t.text :info
 
       t.timestamps
