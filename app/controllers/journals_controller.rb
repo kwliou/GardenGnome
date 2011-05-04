@@ -1,12 +1,14 @@
 class JournalsController < ApplicationController
   # GET /journals
-  # GET /journals.xml
+  # GET /journals.json
   def index
-    @journals = Journal.all
+    @plant = Plant.find(params[:plant_id])
+    @journals = @plant.journals
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @journals }
+      format.json  { render :json => @journals }
+      #format.xml  { render :xml => @journals }
     end
   end
 
@@ -40,15 +42,18 @@ class JournalsController < ApplicationController
   # POST /journals
   # POST /journals.xml
   def create
-    @journal = Journal.new(params[:journal])
+    @plant = Plant.find(params[:plant_id])
+    @journal = @plant.journals.build(params[:journal])
 
     respond_to do |format|
       if @journal.save
         format.html { redirect_to(@journal, :notice => 'Journal was successfully created.') }
-        format.xml  { render :xml => @journal, :status => :created, :location => @journal }
+        format.json { render :json => @journal.id }
+        #format.xml  { render :xml => @journal, :status => :created, :location => @journal }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @journal.errors, :status => :unprocessable_entity }
+        format.json { render :json => 0 }
+        #format.xml  { render :xml => @journal.errors, :status => :unprocessable_entity }
       end
     end
   end
