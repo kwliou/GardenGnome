@@ -3,13 +3,16 @@ class PhotosController < ApplicationController
   protect_from_forgery :except => :create
 
   # GET /photos
-  # GET /photos.xml
+  # GET /photos.json
   def index
-    @photos = Photo.all
+    @garden = Garden.find(params[:garden_id])
+    @photos = @garden.photos
+    @photo_ids = @photos.map { |p| p.id }
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @photos }
+      format.json { render :json => @photo_ids }
+      #format.xml  { render :xml => @photos }
     end
   end
 
