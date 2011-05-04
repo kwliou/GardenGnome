@@ -7,11 +7,11 @@ class PhotosController < ApplicationController
   def index
     @garden = Garden.find(params[:garden_id])
     @photos = @garden.photos
-    @photo_ids = @photos.map { |p| p.id }
+    #@photo_ids = @photos.map { |p| p.id }
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @photo_ids }
+      format.json { render :json => @photos }
       #format.xml  { render :xml => @photos }
     end
   end
