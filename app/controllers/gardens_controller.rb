@@ -34,18 +34,18 @@ class GardensController < ApplicationController
     query = ""
     vars = []
     if !name.nil?
-      query += "name = ?"
-      vars.push(name)
+      query += "lower(name) LIKE ?"
+      vars.push("%#{name.downcase}%")
     end
     if !city.nil?
       query += " AND " if !query.empty? 
-      query += "city = ?"
-      vars.push(city)
+      query += "lower(city) LIKE ?"
+      vars.push("%#{city.downcase}%")
     end
     if !state.nil?
       query += " AND " if !query.empty? 
-      query += "state = ?"
-      vars.push(state)
+      query += "lower(state) LIKE ?"
+      vars.push("%#{state.downcase}%")
     end
     @gardens = Garden.all(:conditions => [query] + vars)
     @stubs = @gardens.map { |g| g.stub }
