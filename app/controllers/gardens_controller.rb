@@ -24,6 +24,37 @@ class GardensController < ApplicationController
 
     render :json => @stubs
   end
+ 
+  # GET /find
+  # GET /find.json
+  def find
+    name = params[:name]
+    city = params[:city]
+    state = params[:state]
+    query = ""
+    vars = []
+    if !name.nil?
+      query += "name = ?"
+      vars.push(name)
+    end
+    if !city.nil?
+      query += " AND " if !query.empty? 
+      query += "city = ?"
+      vars.push(city)
+    end
+    if !state.nil?
+      query += " AND " if !query.empty? 
+      query += "state = ?"
+      vars.push(state)
+    end
+    @gardens = Garden.all(:conditions => [query] + vars)
+    @stubs = @gardens.map { |g| g.stub }
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json  { render :json => @stubs }
+    end
+  end
 
   # GET /gardens/1
   def show
