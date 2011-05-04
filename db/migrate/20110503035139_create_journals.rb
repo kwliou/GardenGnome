@@ -1,6 +1,7 @@
 class CreateJournals < ActiveRecord::Migration
   def self.up
     create_table :journals do |t|
+      t.integer :plant_id
       t.text :body
 
       t.timestamps

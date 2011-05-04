@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(:version => 20110503035139) do
   end
 
   create_table "journals", :force => true do |t|
+    t.integer  "plant_id"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
