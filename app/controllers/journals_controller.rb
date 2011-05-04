@@ -43,6 +43,7 @@ class JournalsController < ApplicationController
   # POST /journals.xml
   def create
     @plant = Plant.find(params[:plant_id])
+    params[:journal][:created_at] = Time.at(params[:journal][:created_at]) if params[:journal].has_key(:created_at)
     @journal = @plant.journals.build(params[:journal])
 
     respond_to do |format|
