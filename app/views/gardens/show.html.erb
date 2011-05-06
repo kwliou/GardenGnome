@@ -25,21 +25,19 @@
     <%=h photo.title %><br />
     <%= image_tag "#{@aws}#{@hash[i]}.jpg" %>
   </p>
-<% end %>
+<% end %><br />
 
-<b>Plots:</b>
+<h2>Plots</h2>
 
 <% @plots.each do |plot| %>
-  <p>
-    <h2><%=h plot.name %></h2><br />
-    <% plot.plants.each do |plant| %>
-      <h3>&nbsp;&nbsp;&nbsp;&nbsp;<%=h plant.name %></h3><br />
-	  
-	  <% plant.journals.each do |journal| %>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em><%=h journal.created_at.getlocal.strftime("%b %d, %Y %I:%M %p") %></em> <%=h journal.body %><br />
-      <% end %>
+  <h3><%=h plot.name %></h3>
+  <% plot.plants.each do |plant| %>
+    <b>&nbsp;&nbsp;&nbsp;&nbsp;<%=h plant.name %></b><br />
+    <% plant.journals.each do |journal| %>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em><%=h journal.created_at.getlocal.strftime("%b %d, %Y %I:%M %p") %></em> <%=h journal.body %>
+	  <br />
     <% end %>
-  </p>
+  <% end %>
 <% end %>
 
 <br />
