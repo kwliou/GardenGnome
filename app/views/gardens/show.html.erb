@@ -1,7 +1,4 @@
-<p>
-  <b>Name:</b>
-  <%=h @garden.name %>
-</p>
+<h2><%=h @garden.name %></h2>
 
 <p>
   <b>Location:</b>
@@ -14,10 +11,12 @@
   <%=h @garden.is_public %>
 </p>
 
+<!--
 <p>
   <b>Info:</b>
   <%=h @garden.info %>
 </p>
+-->
 
 <b>Photos:</b>
 
@@ -28,5 +27,21 @@
   </p>
 <% end %>
 
+<b>Plots:</b>
+
+<% @plots.each do |plot| %>
+  <p>
+    <%=h plot.name %><br />
+    <% plot.plants.each do |plant| %>
+      <%=h plant.name %><br />
+	  
+	  <% plant.journals.each do |journal| %>
+        <strong><%=h journal.created_at %></strong> <%=h journal.body %><br />
+      <% end %>
+    <% end %>
+  </p>
+<% end %>
+
+<br />
 <%= link_to 'Edit', edit_garden_path(@garden) %> |
-<%= link_to 'Back', gardens_path %>
+<%= link_to 'Back', root_path %>

@@ -59,9 +59,11 @@ class GardensController < ApplicationController
   # GET /gardens/1
   def show
     @garden = Garden.find(params[:id])
-    @photos = @garden.photos
-    @hash = @photos.map {|p| Digest::SHA2.hexdigest("#{@garden.id}|#{p.id}|AKIAIPOGJD62WOASLQYA") }
+    @plots = @garden.plots
 	
+	@photos = @garden.photos
+    @hash = @photos.map {|p| Digest::SHA2.hexdigest("#{@garden.id}|#{p.id}|AKIAIPOGJD62WOASLQYA") }
+    
     @aws = "http://s3.amazonaws.com/gardengnome/"
     
     respond_to do |format|
