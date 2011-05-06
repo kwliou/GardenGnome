@@ -1,4 +1,4 @@
-<h2><%=h @garden.name %></h2>
+<h1><%=h @garden.name %></h1>
 
 <p>
   <b>Location:</b>
@@ -31,12 +31,12 @@
 
 <% @plots.each do |plot| %>
   <p>
-    <%=h plot.name %><br />
+    <h2><%=h plot.name %></h2><br />
     <% plot.plants.each do |plant| %>
-      <%=h plant.name %><br />
+      <h3>&nbsp;&nbsp;&nbsp;&nbsp;<%=h plant.name %></h3><br />
 	  
 	  <% plant.journals.each do |journal| %>
-        <strong><%=h journal.created_at %></strong> <%=h journal.body %><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em><%=h journal.created_at.getlocal.strftime("%b %d, %Y %I:%M %p") %></em> <%=h journal.body %><br />
       <% end %>
     <% end %>
   </p>
